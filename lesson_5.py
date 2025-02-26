@@ -17,6 +17,3 @@ git add .
 git commit -m "коментарий к коммиту"
 git push
 """
-"""
-Git
-"""
