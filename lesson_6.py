@@ -1,8 +1,8 @@
 # from test import add, sub, mult
-from package.test import sub
+# from package.test import sub
 
 # add(2,4)
-sub(8,4)
+# sub(8,4)
 # mult(2,8)
 
 # from test import add as plus  # Перезаписть функции из сторонего модуля
@@ -12,6 +12,7 @@ sub(8,4)
 # sub(8, 4)
 # mult(2,8)
 
-# import test
+# import package.test as test
+# from package import test
 
 # test.sub(2,3)
