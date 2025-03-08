@@ -20,6 +20,35 @@
 
 """Декомпозиция -- разделение кода по модулям"""
 
-"Кастомные модули: это модули которые мы сделали сами"
-"Встроенные модули: random, math, time"
-""
+"Кастомные модули: это модули которые мы сделали сами - module , lesson_1, start"
+"Встроенные модули: random, math, time, datetime, os, sys"
+
+"random"
+# import random
+
+# massiv = ["@1", 12, 14211, "Hello"]
+# rand_choice = random.choice(massiv)
+# random.shuffle(massiv)
+
+
+# lucky_num = random.randint(1,10)
+# print(lucky_num)
+# print(rand_choice)
+# print(massiv)
+
+
+"time"
+# # import time
+# from time import sleep  # так не советуется
+
+# print("Loading")
+# # time.sleep(1)
+# print(".")
+# sleep(1)  # так не советуется
+# print("Done!")
+
+"Внешние модули: colorama, termcolor"
+from termcolor import cprint
+
+print("Hello world")
+cprint("Hello world", color="blue", on_color="on_light_yellow")
