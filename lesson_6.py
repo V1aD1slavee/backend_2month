@@ -52,3 +52,11 @@ from termcolor import cprint
 
 print("Hello world")
 cprint("Hello world", color="blue", on_color="on_light_yellow")
+
+"Win"
+"./venv/Scripts/activate" 
+"deactivate"
+
+"MacOS, Linux"
+"source venv/bin/activate"
+"deactivate"
