@@ -7,10 +7,12 @@ connect = sqlite3.connect("Animation.db") # Подключение к базе �
 cursor = connect.cursor()
 
 cursor.execute("""
-CREATE TABLE animators(
+CREATE TABLE IF NOT EXISTS animators(
                id INTEGER PRIMARY KEY AUTOINCREMENT,
-               full_name VARCHAR (25),
-               hobby TEXT,
-               phone_number INT,
+               full_name VARCHAR (25) NOT NULL,
+               hobby TEXT DEFAULT NULL,
+               phone_number INT NOT NULL DEFAULT 996,
                birth_day DATE,
-)""")
+               cuts DOUBLE (5, 2) DEFAULT 0.0,
+               is_married BOOLEAN DEFAULT False)""")
+
