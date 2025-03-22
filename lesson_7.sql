@@ -1,0 +1,1 @@
+SELECT id, full_name, birth_day FROM animators
