@@ -23,8 +23,14 @@ def add_student():
     user_birthday = input("Введите дату рождения: ")
 
     cursor.execute(f"""INSERT INTO animators
-                   (full_name, hobby, phone_number, birth_date)
+                   (full_name, hobby, phone_number, birth_day)
                    VALUES ('{user_full_name}', '{user_hobby}', {user_phone_number}, '{user_birthday}')""")
+
+    # cursor.execute(
+    #     f"""INSERT INTO animators
+    #                (full_name, hobby, phone_number, birth_day)
+    #                VALUES ('?', '?', ?, '?'), user_full_name, user_hobby, user_phone_number, user_birthday"""
+    # )
 
     connect.commit()
 
