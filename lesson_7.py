@@ -42,6 +42,7 @@ def add_animator():
     #                VALUES ('?', '?', ?, '?'), user_full_name, user_hobby, user_phone_number, user_birthday"""
     # )
     # Этот способ более безопасный для отправки запросов в БД
+    
     connect.commit()  # Используется что бы зафиксировать изменения 
 
 add_animator()
