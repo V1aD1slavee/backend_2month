@@ -90,7 +90,22 @@ def update_animator():
 
     connect.commit()
 
+
+def update_animators_cut():
+    user_id = int(input("Введите id пользователя: "))
+    user_cut = float(input("Введите количевство штрафов пользователя: "))
+    cursor.execute(f"SELECT id, full_name FROM animators WHERE id == {user_id}")
+    anim = cursor.fetchone()
+
+    if anim:
+        cursor.execute("""UPDATE animators SET cuts = ? WHERE id = ?""", (user_cut, user_id))
+        connect.commit()
+        print(f"Кол-во штрафов пользователя {anim} успешно изменено")
+    else:
+        print("Такого пльзователя не существует")
+
 # add_animator()
 # all_animation()
 # delete_animator()
 # update_animator()
+# update_animators_cut()
