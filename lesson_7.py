@@ -39,13 +39,12 @@ def add_animator():
     # cursor.execute(
     #     f"""INSERT INTO animators
     #                (full_name, hobby, phone_number, birth_day)
-    #                VALUES ('?', '?', ?, '?'), user_full_name, user_hobby, user_phone_number, user_birthday"""
+    #                VALUES ('?', '?', ?, '?'), 
+    #                user_full_name, user_hobby, user_phone_number, user_birthday"""
     # )
     # Этот способ более безопасный для отправки запросов в БД
     
     connect.commit()  # Используется что бы зафиксировать изменения 
-
-add_animator()
 
 
 def all_animation():
@@ -53,4 +52,45 @@ def all_animation():
     anim = cursor.fetchall()
     print(anim)
 
+
+def delete_animator():
+    user_id = int(input("Введите id пользователя: "))
+    cursor.execute(f"SELECT id, full_name FROM animators WHERE id == {user_id}")
+    del_anim = cursor.fetchone()
+
+    if del_anim:
+        cursor.execute(f"DELETE FROM animators WHERE id == {user_id}")
+        connect.commit()
+        print(f"Пользователь {del_anim} удалён!")
+    else:
+        print("Такого пользователя нет в базе данных")
+
+
+def update_animator():
+    user_id = int(input("Введите id пользователя: "))
+    user_full_name = input("Введите новое имя: ")
+    user_hobby = input("Введите новое хобби: ")
+    user_phone_number = int(input("Введите новый номер телефона: "))
+    user_birthday = input("Введите новую дату рождения: ")
+    user_cut = float(input("Сколько штрафов?: "))
+    user_is_married = bool(input("Пользователь в браке? 1 - да 0 - нет: "))
+
+    cursor.execute(
+        """UPDATE animators SET 
+        full_name = ? , hobby = ?, phone_number = ?,
+        birth_day = ?, cuts = ?, is_married = ? WHERE id = ?""",(
+        user_full_name,
+        user_hobby,
+        user_phone_number,
+        user_birthday,
+        user_cut,
+        user_is_married,
+        user_id)
+    )
+
+    connect.commit()
+
+# add_animator()
 # all_animation()
+# delete_animator()
+# update_animator()
