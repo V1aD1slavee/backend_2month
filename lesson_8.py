@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS animators(
                is_married BOOLEAN DEFAULT False)"""
 )
 
-class Egypt:
+class OneNationClub:
     def __init__(self):
         self.full_name = None
         self.hobby = None
@@ -61,7 +61,6 @@ class Egypt:
             print("Статус пользователя обновлён")
         else:
             print("Такого пользователя не существует!")
-
 
     def delete_animator(self):
         user_id = int(input("Введите id пользователя: "))
@@ -143,5 +142,5 @@ class Egypt:
             else:
                 print("Ответ введён не верно, пожалуйста повторите попытку!")
 
-animator = Egypt()
+animator = OneNationClub()
 animator.main()
