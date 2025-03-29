@@ -41,6 +41,7 @@ class Egypt:
                             VALUES ('{user_full_name}', '{user_hobby}', {user_phone_number}, '{user_birthday}')""")
 
         connect.commit()
+        print("Пользователь успешно добавлен!")
 
     def all_animation(self):
         cursor.execute("SELECT * FROM animators")
@@ -103,3 +104,27 @@ class Egypt:
             print(f"Кол-во штрафов пользователя {anim} успешно изменено")
         else:
             print("Такого пльзователя не существует")
+
+    def main(self):
+        while True:
+            print("\nВыберите действие")
+            print("0-выход, 1-регистрация, 2-просмотр пользователей, 3-обновление данных аниматора \n4-обновление штрафов, 5-удаление пользователя")
+            command = int(input(": "))
+
+            if command == 0:
+                break
+            elif command == 1:
+                self.register()
+            elif command == 2:
+                self.all_animation()
+            elif command == 3:
+                self.update_animator()
+            elif command == 4:
+                self.update_animators_cut()
+            elif command == 5:
+                self.delete_animator()
+            else:
+                print("Ответ введён не верно, пожалуйста повторите попытку!")
+
+animator = Egypt()
+animator.main()
