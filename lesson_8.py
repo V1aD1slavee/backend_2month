@@ -48,6 +48,21 @@ class Egypt:
         animator = cursor.fetchall()
         print(animator)
 
+    def update_animation_married(self):
+        user_id = int(input("Введите id пользователя: "))
+        user_is_married = bool(input("Пользователь в браке? 1 - да 0 - нет: "))
+
+        cursor.execute(f"SELECT id, full_name FROM animators WHERE id == {user_id}")
+        anim = cursor.fetchone()
+
+        if anim:
+            cursor.execute("UPDATE animators SET is_married = ? WHERE id = ?", (user_is_married, user_id))
+            connect.commit()
+            print("Статус пользователя обновлён")
+        else:
+            print("Такого пользователя не существует!")
+
+
     def delete_animator(self):
         user_id = int(input("Введите id пользователя: "))
         cursor.execute(f"SELECT id, full_name FROM animators WHERE id == {user_id}")
@@ -108,7 +123,7 @@ class Egypt:
     def main(self):
         while True:
             print("\nВыберите действие")
-            print("0-выход, 1-регистрация, 2-просмотр пользователей, 3-обновление данных аниматора \n4-обновление штрафов, 5-удаление пользователя")
+            print("0-выход, 1-регистрация, 2-просмотр пользователей, 3-обновление данных аниматора \n4-обновление штрафов, 5-обновленни семейного положения ,6-удаление пользователя")
             command = int(input(": "))
 
             if command == 0:
@@ -122,6 +137,8 @@ class Egypt:
             elif command == 4:
                 self.update_animators_cut()
             elif command == 5:
+                self.update_animation_married()
+            elif command == 6:
                 self.delete_animator()
             else:
                 print("Ответ введён не верно, пожалуйста повторите попытку!")
