@@ -75,21 +75,27 @@ def update_animator():
     user_cut = float(input("Сколько штрафов?: "))
     user_is_married = bool(input("Пользователь в браке? 1 - да 0 - нет: "))
 
-    cursor.execute(
-        """UPDATE animators SET 
-        full_name = ? , hobby = ?, phone_number = ?,
-        birth_day = ?, cuts = ?, is_married = ? WHERE id = ?""",(
-        user_full_name,
-        user_hobby,
-        user_phone_number,
-        user_birthday,
-        user_cut,
-        user_is_married,
-        user_id)
-    )
+    cursor.execute(f"SELECT id, full_name FROM animators WHERE id == {user_id}")
+    anim = cursor.fetchone()
 
-    connect.commit()
+    if anim:
+        cursor.execute(
+            """UPDATE animators SET 
+            full_name = ? , hobby = ?, phone_number = ?,
+            birth_day = ?, cuts = ?, is_married = ? WHERE id = ?""",(
+            user_full_name,
+            user_hobby,
+            user_phone_number,
+            user_birthday,
+            user_cut,
+            user_is_married,
+            user_id)
+        )
 
+        connect.commit()
+        print(f"Пользователь {anim} обновлён!")
+    else:
+        print(f"Пользователь с таким id не существует")
 
 def update_animators_cut():
     user_id = int(input("Введите id пользователя: "))
