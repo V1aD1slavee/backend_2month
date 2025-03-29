@@ -104,7 +104,10 @@ def update_animators_cut():
     anim = cursor.fetchone()
 
     if anim:
-        cursor.execute("""UPDATE animators SET cuts = ? WHERE id = ?""", (user_cut, user_id))
+        cursor.execute(
+            """UPDATE animators SET cuts = ? + ? WHERE id = ?""",
+            (user_cut, user_cut, user_id),
+        )
         connect.commit()
         print(f"Кол-во штрафов пользователя {anim} успешно изменено")
     else:
