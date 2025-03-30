@@ -15,6 +15,14 @@ CREATE TABLE IF NOT EXISTS animators(
                is_married BOOLEAN DEFAULT False)"""
 )
 
+cursor.execute(
+    """
+CREATE TABLE IF NOT EXISTS married(
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               full_name VARCHAR (25) NOT NULL,
+               num_room INTEGER DEFAULT 0   )"""
+)
+
 class OneNationClub:
     def __init__(self):
         self.full_name = None
