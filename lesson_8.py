@@ -47,9 +47,8 @@ class OneNationClub:
             cursor.execute(f"""INSERT INTO animators
                             (full_name, hobby, phone_number, birth_day)
                             VALUES ('{user_full_name}', '{user_hobby}', {user_phone_number}, '{user_birthday}')""")
-
-        connect.commit()
-        print("Пользователь успешно добавлен!")
+            connect.commit()
+            print("Пользователь успешно добавлен!")
 
     def all_animation(self):
         cursor.execute("SELECT * FROM animators")
@@ -121,7 +120,7 @@ class OneNationClub:
 
         if anim:
             cursor.execute("""UPDATE animators SET cuts = cuts + ? WHERE id = ?""",
-                           (user_cut, user_cut, user_id))
+                           (user_cut, user_id))
             connect.commit()
             print(f"Кол-во штрафов пользователя {anim} успешно изменено")
         else:
